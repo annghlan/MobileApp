@@ -1,0 +1,31 @@
+{
+    "project_info": {
+        "project_number": "196829698030",
+        "project_id": "plant-description-app",
+        "storage_bucket": "plant-description-app.appspot.com"
+    },
+    "client": [{
+        "client_info": {
+            "mobilesdk_app_id": "1:196829698030:android:ffd923e093f8b56c9060ff",
+            "android_client_info": {
+                "package_name": "com.example.individualproject"
+            }
+        },
+        "oauth_client": [{
+            "client_id": "196829698030-a868jmo5j9j32bshi7kauf5bd4bnb43b.apps.googleusercontent.com",
+            "client_type": 3
+        }],
+        "api_key": [{
+            "current_key": "AIzaSyAun3P8q4E2PTxCp7AeRkpOA1M71_wi7Jc"
+        }],
+        "services": {
+            "appinvite_service": {
+                "other_platform_oauth_client": [{
+                    "client_id": "196829698030-a868jmo5j9j32bshi7kauf5bd4bnb43b.apps.googleusercontent.com",
+                    "client_type": 3
+                }]
+            }
+        }
+    }],
+    "configuration_version": "1"
+}

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:individualproject/home_screen.dart';
 
 class MyLogin extends StatefulWidget {
   const MyLogin({Key? key}) : super(key: key);
@@ -8,12 +10,14 @@ class MyLogin extends StatefulWidget {
 }
 
 class _MyLoginState extends State<MyLogin> {
+  final emailgetter = TextEditingController();
+  final passwordgetter = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/bg.jfif'), fit: BoxFit.cover),
+            image: AssetImage('assets/bg.jpg'), fit: BoxFit.cover),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -40,9 +44,10 @@ class _MyLoginState extends State<MyLogin> {
                       child: Column(
                         children: [
                           TextField(
+                            controller: emailgetter,
                             style: TextStyle(color: Colors.black),
                             decoration: InputDecoration(
-                                fillColor: Color.fromARGB(255, 0, 0, 0),
+                                fillColor: Color.fromARGB(255, 255, 255, 255),
                                 filled: true,
                                 hintText: "Email",
                                 border: OutlineInputBorder(
@@ -53,10 +58,11 @@ class _MyLoginState extends State<MyLogin> {
                             height: 30,
                           ),
                           TextField(
+                            controller: passwordgetter,
                             style: TextStyle(),
                             obscureText: true,
                             decoration: InputDecoration(
-                                fillColor: Color.fromARGB(255, 0, 0, 0),
+                                fillColor: Color.fromARGB(255, 255, 255, 255),
                                 filled: true,
                                 hintText: "Password",
                                 border: OutlineInputBorder(
@@ -76,10 +82,11 @@ class _MyLoginState extends State<MyLogin> {
                               ),
                               CircleAvatar(
                                 radius: 30,
-                                backgroundColor: Color(0xff4c505b),
+                                backgroundColor:
+                                    Color.fromARGB(255, 255, 255, 255),
                                 child: IconButton(
                                     color: Color.fromARGB(255, 0, 0, 0),
-                                    onPressed: () {},
+                                    onPressed: loginIntoMyApp,
                                     icon: Icon(
                                       Icons.arrow_forward,
                                     )),
@@ -107,7 +114,7 @@ class _MyLoginState extends State<MyLogin> {
                                 style: ButtonStyle(),
                               ),
                               TextButton(
-                                  onPressed: () {},
+                                  onPressed: resetPassword,
                                   child: Text(
                                     'Forgot Password',
                                     style: TextStyle(
@@ -129,5 +136,36 @@ class _MyLoginState extends State<MyLogin> {
         ),
       ),
     );
+  }
+
+  loginIntoMyApp() {
+    print(emailgetter.toString());
+    if (emailgetter.text.isNotEmpty && passwordgetter.text.isNotEmpty) {
+      try {
+        FirebaseAuth.instance
+            .signInWithEmailAndPassword(
+                email: emailgetter.text.trim(),
+                password: passwordgetter.text.trim())
+            .then((value) {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => HomeScreen()));
+          print("Login Sucess");
+        }).onError((error, stackTrace) {
+          print("Login Fail");
+        });
+      } catch (e) {}
+    }
+  }
+
+  resetPassword() {
+    if (emailgetter.text.isNotEmpty) {
+      // rest password
+      // send reset password link to my email
+      FirebaseAuth.instance
+          .sendPasswordResetEmail(email: emailgetter.text.trim())
+          .then((value) {
+        print("Link Send sucessfull");
+      });
+    }
   }
 }

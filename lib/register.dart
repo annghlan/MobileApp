@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:individualproject/login.dart';
 
 class MyRegister extends StatefulWidget {
   const MyRegister({Key? key}) : super(key: key);
@@ -8,12 +10,14 @@ class MyRegister extends StatefulWidget {
 }
 
 class _MyRegisterState extends State<MyRegister> {
+  final emailcontroller = TextEditingController();
+  final passwordcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/register.png'), fit: BoxFit.cover),
+            image: AssetImage('assets/bg.jpg'), fit: BoxFit.cover),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -43,32 +47,7 @@ class _MyRegisterState extends State<MyRegister> {
                       child: Column(
                         children: [
                           TextField(
-                            style:
-                                TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-                            decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
-                                    color: Color.fromARGB(255, 0, 0, 0),
-                                  ),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                hintText: "Name",
-                                hintStyle: TextStyle(
-                                    color: Color.fromARGB(255, 11, 11, 11)),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                )),
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          TextField(
+                            controller: emailcontroller,
                             style:
                                 TextStyle(color: Color.fromARGB(255, 7, 7, 7)),
                             decoration: InputDecoration(
@@ -95,6 +74,7 @@ class _MyRegisterState extends State<MyRegister> {
                             height: 30,
                           ),
                           TextField(
+                            controller: passwordcontroller,
                             style:
                                 TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                             obscureText: true,
@@ -133,10 +113,11 @@ class _MyRegisterState extends State<MyRegister> {
                               ),
                               CircleAvatar(
                                 radius: 30,
-                                backgroundColor: Color(0xff4c505b),
+                                backgroundColor:
+                                    Color.fromARGB(255, 255, 255, 255),
                                 child: IconButton(
                                     color: Color.fromARGB(255, 0, 0, 0),
-                                    onPressed: () {},
+                                    onPressed: RegisterIntoFirebase,
                                     icon: Icon(
                                       Icons.arrow_forward,
                                     )),
@@ -176,5 +157,29 @@ class _MyRegisterState extends State<MyRegister> {
         ),
       ),
     );
+  }
+
+  RegisterIntoFirebase() {
+    // check email and password field is not empty
+    if (emailcontroller.text.isNotEmpty && passwordcontroller.text.isNotEmpty) {
+      // if any exception occurs then it should be handled
+      try {
+        // creating user login with email and password
+        // by the use of firebase auth
+
+        FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
+                email: emailcontroller.text.trim(),
+                password: passwordcontroller.text.trim())
+            .then((value) {
+              Navigator.push(
+              context, MaterialPageRoute(builder: (context) => MyLogin()));
+          print("Login sucessfull");
+        }).onError((error, stackTrace) {
+          print(error);
+          print("unsucesful");
+        });
+      } catch (e) {}
+    }
   }
 }
