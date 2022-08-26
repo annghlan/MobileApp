@@ -1,24 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:individualproject/login.dart';
-import 'package:individualproject/register.dart';
+import 'package:individualproject/screens/login.dart';
+import 'package:individualproject/screens/register.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:individualproject/screens/HomePage.dart';
 
 void main() async {
-  // initializing firebase 
-  // asyn function that help to excute task in future
-
-  // await interrupt the process flow unitl the async methods completes.
-
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: MyRegister(),
-    routes: {
-      'register': (context) => MyRegister(),
-      'login': (context) => MyLogin(),
-    },
-  ));
+  {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp();
+    runApp(const MyApp());
+  }
 }
 
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: HomePage(),
+        routes: {
+          'register': (context) => MyRegister(),
+          'login': (context) => MyLogin(),
+        });
+  }
+}

@@ -55,7 +55,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyD67iRqTTrD9KOyXYtcpUHd3JXj5oTOn1o',
-    appId: '1:158632156130:android:e57ce28865c1de7b4e37bb',
+    appId: '1:158632156130:android:bc9713dd97e72ece4e37bb',
     messagingSenderId: '158632156130',
     projectId: 'plant-app-282e0',
     storageBucket: 'plant-app-282e0.appspot.com',
@@ -63,7 +63,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCfi5tGu3c2WO04m_u0qMLRfTBztvjTb_U',
-    appId: '1:158632156130:ios:46e6a467a70ac4f94e37bb',
+    appId: '1:158632156130:ios:ae4db15bc3195c7e4e37bb',
     messagingSenderId: '158632156130',
     projectId: 'plant-app-282e0',
     storageBucket: 'plant-app-282e0.appspot.com',
@@ -73,7 +73,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyCfi5tGu3c2WO04m_u0qMLRfTBztvjTb_U',
-    appId: '1:158632156130:ios:46e6a467a70ac4f94e37bb',
+    appId: '1:158632156130:ios:ae4db15bc3195c7e4e37bb',
     messagingSenderId: '158632156130',
     projectId: 'plant-app-282e0',
     storageBucket: 'plant-app-282e0.appspot.com',

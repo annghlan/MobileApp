@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:individualproject/home_screen.dart';
+import 'package:individualproject/screens/HomePage.dart';
 
 class MyLogin extends StatefulWidget {
   const MyLogin({Key? key}) : super(key: key);
@@ -148,7 +148,7 @@ class _MyLoginState extends State<MyLogin> {
                 password: passwordgetter.text.trim())
             .then((value) {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HomeScreen()));
+              context, MaterialPageRoute(builder: (context) => HomePage()));
           print("Login Sucess");
         }).onError((error, stackTrace) {
           print("Login Fail");
