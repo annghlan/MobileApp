@@ -1,5 +1,3 @@
-// import 'dart:html';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -188,7 +186,8 @@ class _ViewPlantDetails extends State<ViewPlantDetails> {
                                         },
                                         backgroundColor:
                                             Color.fromARGB(255, 9, 192, 103),
-                                        child: Icon(Icons.edit),
+                                        child: Icon(
+                                            Icons.edit), //edit garna plany list
                                       ),
                                       SizedBox(
                                         width: 35,

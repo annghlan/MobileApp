@@ -195,7 +195,7 @@ class _CreatePlantDetails extends State<CreatePlantDetails> {
   }
 
   void _storeInformation() async {
-    final plant_name = _plantName.text.trim();
+    final plant_name = _plantName.text.trim(); //text filed ma sapce hatauxa
     final plant_price = _plantPrice.text.trim();
     final desctiption = _descriptionData.text.trim();
 
@@ -212,8 +212,8 @@ class _CreatePlantDetails extends State<CreatePlantDetails> {
         FirebaseStorage.instance
             .ref(plant_img_destination)
             .putFile(plant_image_file!);
-            Navigator.push(
-              context, MaterialPageRoute(builder: (context) => ViewPlantDetails()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => ViewPlantDetails()));
       });
     }
   }

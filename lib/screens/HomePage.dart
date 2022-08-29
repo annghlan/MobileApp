@@ -1,10 +1,7 @@
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_svg/svg.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:individualproject/screens/MyBottomNav.dart';
 import 'package:individualproject/screens/Body.dart';
-// import 'package:individualproject/screens/ViewPlantDetails.dart';
-// import 'package:individualproject/screens/CreatePlantDetails.dart';
 import 'package:individualproject/screens/login.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,8 +15,6 @@ class _HomePage extends State<HomePage> {
   // final _storageRef=FirebaseStorage.instance;
 
   @override
- 
-  @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
@@ -29,6 +24,7 @@ class _HomePage extends State<HomePage> {
     );
   }
 
+//logout button
   AppBar buildAppBar() {
     return AppBar(
       actions: [
@@ -46,7 +42,7 @@ class _HomePage extends State<HomePage> {
         )
       ],
       leading: IconButton(
-        icon: Icon(Icons.menu),
+        icon: Icon(Icons.menu), //homepage ko menu button icon bata leko xa
         onPressed: () {
           lookValue();
         },

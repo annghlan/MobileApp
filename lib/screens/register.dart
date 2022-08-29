@@ -12,7 +12,9 @@ class MyRegister extends StatefulWidget {
 class _MyRegisterState extends State<MyRegister> {
   final emailcontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
-  @override
+  //Text input Field ma enter gareko data lai store garne variable
+
+  @override //when a child class tries to override the parent class's method
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
@@ -20,6 +22,7 @@ class _MyRegisterState extends State<MyRegister> {
             image: AssetImage('assets/bg.jpg'), fit: BoxFit.cover),
       ),
       child: Scaffold(
+        //used to implements the basic material design visual layout structure.
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -35,6 +38,8 @@ class _MyRegisterState extends State<MyRegister> {
                     color: Color.fromARGB(255, 0, 0, 0), fontSize: 33),
               ),
             ),
+            // create an account
+
             SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.only(
@@ -70,6 +75,9 @@ class _MyRegisterState extends State<MyRegister> {
                                   borderRadius: BorderRadius.circular(10),
                                 )),
                           ),
+
+                          // box bhitra ko email text
+
                           SizedBox(
                             height: 30,
                           ),
@@ -105,13 +113,14 @@ class _MyRegisterState extends State<MyRegister> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Sign Up',
+                                'Sign Up', //signup
                                 style: TextStyle(
                                     color: Color.fromARGB(255, 0, 0, 0),
                                     fontSize: 27,
                                     fontWeight: FontWeight.w700),
                               ),
                               CircleAvatar(
+                                //arko page ma jana icon circle wala
                                 radius: 30,
                                 backgroundColor:
                                     Color.fromARGB(255, 255, 255, 255),
@@ -172,7 +181,7 @@ class _MyRegisterState extends State<MyRegister> {
                 email: emailcontroller.text.trim(),
                 password: passwordcontroller.text.trim())
             .then((value) {
-              Navigator.push(
+          Navigator.push(
               context, MaterialPageRoute(builder: (context) => MyLogin()));
           print("Login sucessfull");
         }).onError((error, stackTrace) {

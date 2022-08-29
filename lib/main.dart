@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:individualproject/screens/HomePage.dart';
 
 void main() async {
+  //await vanda matho code excecute hunxa paila
   {
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp();
